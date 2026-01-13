@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Mrqsts Club - Marquesitas de Nobleza</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1e3a5f;
+            --gold: #d4af37;
+            --light-gold: #f4e4c1;
+            --cream: #faf8f3;
+            --dark: #2c2c2c;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--cream);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--navy) 0%, #2c4a6f 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo h1 {
+            font-size: 3rem;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            text-align: center;
+            font-style: italic;
+            color: var(--light-gold);
+            font-size: 1.2rem;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--gold);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+        }
+
+        nav a:hover {
+            color: white;
+            background-color: var(--navy);
+            border-radius: 5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(30, 58, 95, 0.8), rgba(30, 58, 95, 0.8)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23d4af37" width="1200" height="600"/><circle cx="600" cy="300" r="200" fill="%231e3a5f" opacity="0.1"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--navy);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            background-color: var(--light-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        /* Menu Section */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid var(--light-gold);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(212, 175, 55, 0.3);
+        }
+
+        .menu-item h3 {
+            color: var(--navy);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item .price {
+            color: var(--gold);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .menu-item p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--gold);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            font-weight: bold;
+        }
+
+        /* About Section */
+        .about {
+            background-color: white;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 2;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature h4 {
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--navy) 0%, #2c4a6f 100%);
+            color: white;
+        }
+
+        .contact h2 {
+            color: var(--gold);
+        }
+
+        .contact h2::after {
+            background-color: white;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-item {
+            background-color: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item h4 {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item p {
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--gold);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--light-gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>👑 The Mrqsts Club</h1>
+            </div>
+            <p class="tagline">Marquesitas de Nobleza • Where Tradition Meets Excellence</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#menu">Menú</a></li>
+            <li><a href="#about">Nosotros</a></li>
+            <li><a href="#contact">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Marquesitas Artesanales Premium</h2>
+            <p>Descubre el sabor auténtico de Yucatán con nuestro toque único: mantequilla avellanada y un secreto de sal marina que las hace irresistibles.</p>
+            <a href="#menu" class="cta-button">Ver Menú Exclusivo</a>
+        </div>
+    </section>
+
+    <section id="menu">
+        <div class="container">
+            <h2>Nuestro Menú de Nobleza</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>La Marquesa Tradicional</h3>
+                    <p class="price">$70 MXN</p>
+                    <p>Nuestra receta clásica con queso de bola holandés, preparada con mantequilla avellanada y un toque secreto de sal marina.</p>
+                    <span class="badge">Clásica</span>
+                </div>
+
+                <div class="menu-item">
+                    <h3>Marquesita Virreinal</h3>
+                    <p class="price">$85 MXN</p>
+                    <p>Ate de membrillo artesanal infusionado con cardamomo, un sabor que evoca la época colonial con elegancia moderna.</p>
+                    <span class="badge">Premium</span>
+                </div>
+
+                <div class="menu-item">
+                    <h3>El Dúo de Nobleza</h3>
+                    <p class="price">$140 MXN</p>
+                    <p>Combina lo mejor de dos mundos: Una Marquesa Tradicional + Una Virreinal. La experiencia completa.</p>
+                    <span class="badge">Best Seller</span>
+                </div>
+
+                <div class="menu-item">
+                    <h3>Bocaditos del Marqués</h3>
+                    <p class="price">$120 MXN</p>
+                    <p>Set de degustación con 3 mini-marquesitas (15cm) de sabores exclusivos. Perfecto para compartir.</p>
+                    <span class="badge">Degustación</span>
+                </div>
+
+                <div class="menu-item">
+                    <h3>Horchata "La Abuela"</h3>
+                    <p class="price">$35 MXN</p>
+                    <p>Horchata artesanal con infusión lenta de canela de Ceylán. El pairing perfecto para tu marquesita.</p>
+                    <span class="badge">Bebida</span>
+                </div>
+
+                <div class="menu-item">
+                    <h3>Café de Olla Frío</h3>
+                    <p class="price">$40 MXN</p>
+                    <p>Cold brew especiado con piloncillo y especias tradicionales. Suave, sin acidez, refrescante.</p>
+                    <span class="badge">Bebida</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Nuestra Historia</h2>
+            <div class="about-content">
+                <p>
+                    <strong>The Mrqsts Club</strong> nace de la pasión por las marquesitas auténticas de Yucatán, 
+                    elevadas con técnicas gourmet y un toque de innovación. Cada marquesita es una obra de arte 
+                    crujiente, preparada al momento con ingredientes premium.
+                </p>
+                <p style="margin-top: 1.5rem;">
+                    Nuestro secreto: la mantequilla avellanada (browned butter) que le da ese aroma único a nuez, 
+                    y un toque de sal marina que balancea perfectamente el dulzor, creando una experiencia 
+                    adictiva e inolvidable.
+                </p>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🧈</div>
+                    <h4>Mantequilla Avellanada</h4>
+                    <p>Proceso artesanal que crea un aroma profundo y único</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🧂</div>
+                    <h4>Sal Marina Premium</h4>
+                    <p>El toque secreto que realza cada sabor sin empalagar</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🧀</div>
+                    <h4>Queso de Bola Auténtico</h4>
+                    <p>Importado de Holanda, como en la receta original yucateca</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h4>Preparación al Momento</h4>
+                    <p>Cada marquesita es hecha frente a ti, garantizando frescura</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Encuéntranos</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h4>📍 Ubicación</h4>
+                    <p>Santa Mónica<br>Tlalnepantla, Estado de México</p>
+                </div>
+                <div class="contact-item">
+                    <h4>🕐 Horario</h4>
+                    <p>Lunes a Jueves: 5:00 PM - 9:00 PM<br>
+                    Viernes a Domingo: 1:00 PM - 10:00 PM</p>
+                </div>
+                <div class="contact-item">
+                    <h4>📱 Contacto</h4>
+                    <p>Tel: (55) 1234-5678<br>
+                    themrqstsclub@gmail.com</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#menu" class="cta-button">Conoce Nuestro Menú</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 The Mrqsts Club. Todos los derechos reservados.</p>
+            <p style="font-style: italic; color: var(--gold);">#MarquesitasDeNobleza #TheMrqstsClub</p>
+            <div class="social-links">
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="Facebook">📘</a>
+                <a href="#" title="TikTok">🎵</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
